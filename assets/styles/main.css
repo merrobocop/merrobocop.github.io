@@ -2,48 +2,153 @@
    - responsive grid
    - переменные для быстрого изменения темы
    - базовая типографика и кнопки */
-:root{
-  --bg:#0f1724;
-  --card:#0b1220;
-  --muted:#9aa4b2;
-  --accent:#1e90ff;
-  --text:#e6eef6;
-  --radius:12px;
+:root {
+  --bg: #0f1724;       /* фон по умолчанию (dark) */
+  --card: #0b1220;     /* фон карточек */
+  --muted: #9aa4b2;    /* серый текст */
+  --accent: #1e90ff;   /* основной цвет кнопок */
+  --text: #e6eef6;     /* основной цвет текста */
+  --radius: 12px;      /* скругления */
 }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
+
+/* Сброс и базовые настройки */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:linear-gradient(180deg,var(--bg) 0%, #071025 100%);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
-.container{max-width:1100px;margin:0 auto;padding:24px}
-.site-header{background:transparent;padding:12px 0}
-.brand{font-weight:700;color:var(--text);text-decoration:none;font-size:20px}
-.hero{padding:18px 0}
-.lead{color:var(--muted);margin-top:6px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:16px}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(2,6,23,0.6)}
-.card h3{margin:0 0 8px 0}
-.card p{margin:0;color:var(--muted);font-size:14px}
-.card-actions{display:flex;gap:8px;margin-top:12px}
-.btn{display:inline-block;padding:10px 14px;background:var(--accent);color:#fff;text-decoration:none;border-radius:8px;font-weight:600}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
-.site-footer{padding:20px 0;color:var(--muted);font-size:13px}
-.product h1{margin-top:8px}
-details{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
-@media (max-width:600px){
-  .container{padding:12px}
-  .brand{font-size:18px}
+
+/* Контейнер */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
 }
-/* Light-theme modifier (can be toggled by JS) */
-.light{
+
+/* Header */
+.site-header {
+  background: transparent;
+  padding: 12px 0;
+}
+.brand {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Hero */
+.hero {
+  padding: 18px 0;
+}
+.lead {
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.card h3 {
+  margin: 0 0 8px 0;
+}
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.btn:hover {
+  background: #0a6adf;
+}
+
+/* Ghost кнопки */
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+.btn.ghost:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Footer */
+.site-footer {
+  padding: 20px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Product page */
+.product h1 {
+  margin-top: 8px;
+}
+
+/* Details */
+details {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+  }
+  .brand {
+    font-size: 18px;
+  }
+}
+
+/* ----------------------------- */
+/* Light theme (однотонный фон) */
+/* ----------------------------- */
+.light {
   --bg: #f6f8fb;
-  --card:#ffffff;
-  --muted:#4b5563;
-  --accent:#0b69ff;
-  --text:#051225;
-  background:linear-gradient(180deg,var(--bg) 0%, #e8eefb 100%);
+  --card: #ffffff;
+  --muted: #4b5563;
+  --accent: #0b69ff;
+  --text: #051225;
+
+  background: var(--bg); /* однотонный фон */
 }
